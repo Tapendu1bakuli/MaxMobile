@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:max_mob/utilis/text_utils/app_strings.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../Controller/customerListController.dart';
@@ -28,12 +29,12 @@ class customerListPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Data list'),
+          title: Text(AppStrings.dataList.tr),
         ),
         body: Obx(
           () {
             if (customerListController.dataList.isEmpty) {
-              return const Center(child: Text('No data found'));
+              return Center(child: Text(AppStrings.noDataFound.tr));
             }
             return ListView.builder(
               itemCount: customerListController.dataList.length,

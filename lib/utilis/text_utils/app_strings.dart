@@ -2,6 +2,9 @@ class AppStrings{
   //Nuritopia
   static const String welcomeToMaxMobility = "Welcome to Max Mobility";
   static const String nominatedAndWinning = "The nominated & winning videos get rewarded";
+  static const String dataList = "Data list";
+  static const String noDataFound = "No data found";
+  static const String openATextFile = "Open a text file";
   static const String connectWithMe = "Connect with me in the Metaverse";
   static const String nickname = "Nickname";
   static const String mbti = "MBTI";
