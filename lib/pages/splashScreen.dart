@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
+import '../utilis/text_utils/app_strings.dart';
 import 'loginPage.dart';
 
 
@@ -51,9 +52,9 @@ class _SplashScreenState extends State<SplashScreen>
       body: Center(
         child: FadeTransition(
           opacity: _fadeAnimation,
-          child: const Text(
-            'Sugam App',
-            style: TextStyle(
+          child: Text(
+            AppStrings.welcomeToMaxMobility.tr,
+            style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
               color: Colors.black,

@@ -28,7 +28,7 @@ class customerListPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Customer List'),
+          title: const Text('Data list'),
         ),
         body: Obx(
           () {

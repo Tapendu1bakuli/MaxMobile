@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../Controller/loginController.dart';
+import '../utilis/text_utils/app_strings.dart';
 
 
 class LoginPage extends StatelessWidget {
@@ -18,9 +19,9 @@ class LoginPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Text(
-                'Login',
-                style: TextStyle(
+              Text(
+                AppStrings.login.tr,
+                style: const  TextStyle(
                   fontSize: 24.0,
                   fontWeight: FontWeight.bold,
                 ),
@@ -29,15 +30,15 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 20.0),
               TextField(
                 controller: emailController,
-                decoration: const InputDecoration(
-                  labelText: 'Email',
+                decoration: InputDecoration(
+                  labelText: AppStrings.emailOnly.tr,
                 ),
               ),
               const SizedBox(height: 10.0),
               TextField(
                 controller: passwordController,
-                decoration: const InputDecoration(
-                  labelText: 'Password',
+                decoration: InputDecoration(
+                  labelText: AppStrings.password.tr,
                 ),
                 obscureText: true,
               ),
@@ -46,7 +47,7 @@ class LoginPage extends StatelessWidget {
                 onPressed: () {
                   loginController.login(emailController.text.toString(), passwordController.text.toString());
                 },
-                child: const Text('Login'),
+                child: Text(AppStrings.login.tr),
               ),
             ],
           ),

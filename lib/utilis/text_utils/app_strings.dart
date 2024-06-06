@@ -1,7 +1,6 @@
 class AppStrings{
   //Nuritopia
-  static const String welcomeToNuritopia = "Welcome to NURITOPIA 2D";
-  static const String nuritopiaWebLink = "https://nuritopia.com/";
+  static const String welcomeToMaxMobility = "Welcome to Max Mobility";
   static const String nominatedAndWinning = "The nominated & winning videos get rewarded";
   static const String connectWithMe = "Connect with me in the Metaverse";
   static const String nickname = "Nickname";
