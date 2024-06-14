@@ -24,6 +24,7 @@ class customerListPage extends StatelessWidget {
     openGoogleMaps(lat, lng);
   }
 
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
