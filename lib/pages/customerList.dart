@@ -32,6 +32,14 @@ class customerListPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(AppStrings.dataList.tr),
+          actions: [
+            Obx(()=> IconButton(
+                  onPressed: () {
+                  },
+                  icon: customerListController.isInternetAvailable.value!="ConnectivityResult.none"?const Icon(Icons.wifi):const Icon(Icons.signal_wifi_connected_no_internet_4_rounded)),
+            ),
+
+          ],
         ),
         body: Obx(
           () {
