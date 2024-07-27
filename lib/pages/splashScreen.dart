@@ -53,7 +53,7 @@ class _SplashScreenState extends State<SplashScreen>
         child: FadeTransition(
           opacity: _fadeAnimation,
           child: Text(
-            AppStrings.welcomeToMaxMobility.tr,
+            AppStrings.welcomeToMaxMobile.tr,
             style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
