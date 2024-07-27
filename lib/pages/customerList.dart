@@ -7,6 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../Controller/customerListController.dart';
 import 'addCustomerPage.dart';
+import 'database.dart';
 
 
 class customerListPage extends StatelessWidget {
@@ -41,28 +42,47 @@ class customerListPage extends StatelessWidget {
               itemCount: customerListController.dataList.length,
               itemBuilder: (context, index) {
                 final item = customerListController.dataList[index];
+                print( item['isCompleted']);
                 return Card(
-                  child: ListTile(
-                    title: Text(item['name']),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(item['mobile']),
-                        Text(item['email']),
-                      ],
-                    ),
-                    leading: CircleAvatar(
-                      backgroundImage: FileImage(
-                          File(item['image'])),
-                    ),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.location_on_sharp, color: Colors.red,),
-                      onPressed: () {
-                        final destinationLat = double.parse(item['lat']);
-                        final destinationLng = double.parse(item['lng']);
-                        openGoogleMaps(destinationLat, destinationLng);
-                      },
-                    ),
+                  child: Row(
+                    children: [
+                      Checkbox(value: item['isCompleted'] == 2, onChanged: (bool? value)async{
+                        final database = await openDatabase1();
+                        updateIsCompleted(database,item['id'],value!?2:1);
+                        customerListController.retrieveData();
+                        Get.snackbar("Done", "Task marked as completed");
+                      }),
+                      Expanded(
+                        child: ListTile(
+                          title: Text(item['name']),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(item['mobile']),
+                              Text(item['email']),
+                            ],
+                          ),
+                          leading: CircleAvatar(
+                            backgroundImage: FileImage(
+                                File(item['image'])),
+                          ),
+                          trailing: IconButton(
+                            icon: const Icon(Icons.location_on_sharp, color: Colors.red,),
+                            onPressed: () {
+                              final destinationLat = double.parse(item['lat']);
+                              final destinationLng = double.parse(item['lng']);
+                              openGoogleMaps(destinationLat, destinationLng);
+                            },
+                          ),
+                        ),
+                      ),
+                      IconButton(padding: EdgeInsets.zero,onPressed: ()async{
+                        final database = await openDatabase1();
+                        removeData(database,item['id']);
+                        customerListController.retrieveData();
+                        Get.snackbar("Deleted", "Task deletion successful");
+                      }, icon: const Icon(Icons.delete,color: Colors.red,))
+                    ],
                   ),
                 );
               },

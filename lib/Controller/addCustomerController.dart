@@ -13,6 +13,7 @@ class AddCustomerController extends GetxController {
       String address,
       String lat,
       String lng,
+      String description,
       ) async {
     isLoading(true);
     final row = {
@@ -23,6 +24,8 @@ class AddCustomerController extends GetxController {
       'address': address,
       'lat': lat,
       'lng': lng,
+      'isCompleted': 1,
+      'description': description,
     };
 
     final insertedId = await database.insert('my_table', row);

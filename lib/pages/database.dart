@@ -45,7 +45,9 @@ Future<Database> openDatabase1() async {
             email TEXT,
             address TEXT,
             lat TEXT,
-            lng TEXT
+            lng TEXT,
+            isCompleted INTEGER,
+            description TEXT
           )
         ''');
       } catch (e, s) {
@@ -95,9 +97,11 @@ Future<int> insertData(Database database) async {
     'name': 'John Doe',
     'mobile': '1234567890',
     'email': 'johndoe@example.com',
+    'description': 'description',
     'address': '71A, DCM street',
     'lat': '28.7041',
     'lng': '77.1025',
+    'isCompleted': 1
   };
 
   final insertedId = await database.insert('my_table', row);
@@ -125,4 +129,12 @@ Future<bool> checkDataExists(Database database) async {
 
 Future<void> removeAllData(Database database) async {
   await database.delete('my_table');
+}
+Future<void> updateIsCompleted(Database database,int id, int isCompleted) async {
+  await database.update(
+    'my_table',
+    {'isCompleted': isCompleted},
+    where: 'id = ?',
+    whereArgs: [id],
+  );
 }

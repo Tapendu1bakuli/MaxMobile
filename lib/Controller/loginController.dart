@@ -8,7 +8,7 @@ class LoginController extends GetxController {
   RxBool isLoading = false.obs;
 
   Future<void> login(String email, String password) async {
-    if(email == "user@maxmobility.in" && password != "Abc@#123") {
+    if(email == "000000" && password != "000000") {
       Get.snackbar(
         'Login Status',
         "Entered password is wrong",
@@ -29,7 +29,7 @@ class LoginController extends GetxController {
           ),
         ),
       );
-    } else if(email != "user@maxmobility.in" && password == "Abc@#123") {
+    } else if(email != "000000" && password == "000000") {
       Get.snackbar(
         'Login Status',
         "Entered email is wrong",
@@ -50,7 +50,7 @@ class LoginController extends GetxController {
           ),
         ),
       );
-    } else if(email == "user@maxmobility.in" && password == "Abc@#123"){
+    } else if(email == "111111" && password == "111111"){
       Get.to(()=> customerListPage(), transition: Transition.leftToRightWithFade, duration: const Duration(milliseconds: 700),);
       Get.snackbar(
         'Login Status',

@@ -20,6 +20,7 @@ class _AddCustomerPageState extends State<AddCustomerPage> {
   final nameController = TextEditingController();
   final phoneController = TextEditingController();
   final emailController = TextEditingController();
+  final descriptionController = TextEditingController();
   String? currentLocation;
   String? locationErrorMessage;
 
@@ -130,6 +131,15 @@ class _AddCustomerPageState extends State<AddCustomerPage> {
                 ),
               ),
               const SizedBox(height: 8.0),
+              const SizedBox(height: 8.0),
+              TextField(
+                keyboardType: TextInputType.multiline,
+                controller: descriptionController,
+                decoration: const InputDecoration(
+                  labelText: 'Description',
+                ),
+              ),
+              const SizedBox(height: 8.0),
               ElevatedButton(
                 onPressed: () {
                   Get.to(
@@ -187,7 +197,7 @@ class _AddCustomerPageState extends State<AddCustomerPage> {
                 onPressed: () async {
                   if (nameController.text.isEmpty ||
                       phoneController.text.isEmpty ||
-                      emailController.text.isEmpty ||
+                      emailController.text.isEmpty ||descriptionController.text.isEmpty ||
                       pickupLocationController.lat.toString() == '' ||
                       profileController.profilePicture == null) {
                     Get.snackbar(
@@ -221,6 +231,7 @@ class _AddCustomerPageState extends State<AddCustomerPage> {
                       pickupLocationController.address.toString(),
                       pickupLocationController.lat.toString(),
                       pickupLocationController.long.toString(),
+                      descriptionController.text.toString(),
                     );
                     customerListController.retrieveData();
                     pickupLocationController.setDefaultValue();

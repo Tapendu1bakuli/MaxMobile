@@ -1,6 +1,6 @@
 class AppStrings{
   //Nuritopia
-  static const String welcomeToMaxMobility = "Welcome to Max Mobility";
+  static const String welcomeToMaxMobility = "Welcome to Max Mobile";
   static const String nominatedAndWinning = "The nominated & winning videos get rewarded";
   static const String dataList = "Data list";
   static const String noDataFound = "No data found";
