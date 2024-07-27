@@ -51,6 +51,11 @@ class CustomerListController extends GetxController {
     }
     await database.close();
   }
+  Future<void> retriveAfterDelete()async{
+    final database = await openDatabase1();
+    final insertedData = await getInsertedData(database);
+    dataList.value = insertedData;
+  }
   void showSuccessSnackBarForOnline(String? title, String msg) {
     clearSnackBars();
     Get.snackbar(title ?? "Oops!", msg, snackPosition: SnackPosition.TOP,

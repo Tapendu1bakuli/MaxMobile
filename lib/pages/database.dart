@@ -118,7 +118,7 @@ Future<int> removeData(Database database, int id) async {
 }
 
 Future<List<Map<String, dynamic>>> getInsertedData(Database database) async {
-  final results = await database.query('my_table');
+  final results = await database.query('my_table',orderBy: "id");
   return results;
 }
 

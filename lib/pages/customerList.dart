@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_place_picker/utils/urls.dart';
 import 'package:get/get.dart';
 import 'package:max_mob/utilis/text_utils/app_strings.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -17,12 +18,12 @@ class customerListPage extends StatelessWidget {
 
   void openGoogleMaps(double lat, double lng) async {
     final url = 'https://www.google.com/maps/dir/?api=1&destination=$lat,$lng';
-    if (await canLaunch(url)) {
-      await launch(url, universalLinksOnly: true,);
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
     } else {
       throw 'Could not launch Google Maps';
     }
-    openGoogleMaps(lat, lng);
+    // openGoogleMaps(lat, lng);
   }
 //
 
@@ -50,7 +51,7 @@ class customerListPage extends StatelessWidget {
               itemCount: customerListController.dataList.length,
               itemBuilder: (context, index) {
                 final item = customerListController.dataList[index];
-                print( item['isCompleted']);
+                print( "==>${customerListController.dataList[index]}");
                 return Card(
                   child: Row(
                     children: [
@@ -62,7 +63,7 @@ class customerListPage extends StatelessWidget {
                       }),
                       Expanded(
                         child: ListTile(
-                          title: Text(item['name']),
+                          title: Text("${item['name']}-${item['id']}"),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -87,7 +88,8 @@ class customerListPage extends StatelessWidget {
                       IconButton(padding: EdgeInsets.zero,onPressed: ()async{
                         final database = await openDatabase1();
                         removeData(database,item['id']);
-                        customerListController.retrieveData();
+                        print(item['id']);
+                        customerListController.retriveAfterDelete();
                         Get.snackbar("Deleted", "Task deletion successful");
                       }, icon: const Icon(Icons.delete,color: Colors.red,))
                     ],
